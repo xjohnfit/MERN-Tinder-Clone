@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import { getConnectedUsers, getIO } from '../socket/socketServer.js';
 
 export const swipeRight = async (req, res) => {
     try {
@@ -24,6 +25,17 @@ export const swipeRight = async (req, res) => {
                 await Promise.all([currentUser.save(), likedUser.save()]);
 
                 //TODO SEND NOTIFICATION IF IT IS A MATCH USING SOCKET.IO
+                const getConnectedUsers = getConnectedUsers()
+                const likedUserSocketId = getConnectedUsers.get(likedUserId);
+                const io = getIO();
+
+                if(likedUserSocketId) {
+                    io.to(likedUserSocketId).emit('newMatch', {
+                        userId: currentUser._id,
+                        name: currentUser.name,
+                        image: currentUser.image,
+                    });
+                }
             }
 
         }

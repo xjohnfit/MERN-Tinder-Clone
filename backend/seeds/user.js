@@ -70,9 +70,9 @@ const generateRandomUser = (gender, index) => {
 
 const seedUsers = async () => {
 	try {
-		await mongoose.connect(process.env.MONGO_URI);
+		await mongoose.connect("mongodb+srv://xjohnfitcodes:idNqFLpfPdGjcdR5@cluster0.w7sl0.mongodb.net/tinder-clone?retryWrites=true&w=majority&appName=Cluster0");
 
-		// await User.deleteMany({});
+		await User.deleteMany({});
 
 		const maleUsers = maleNames.map((_, i) => generateRandomUser("male", i));
 		const femaleUsers = femaleNames.map((_, i) => generateRandomUser("female", i));

@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/userModel.js';
 
 export const protectedRoute = async (req, res, next) => {
+
     try {
         const token = req.cookies.jwt;
 
@@ -16,6 +17,8 @@ export const protectedRoute = async (req, res, next) => {
         }
 
         const currentUser = await User.findById(decoded.id);
+
+        
 
         req.user = currentUser;
 
