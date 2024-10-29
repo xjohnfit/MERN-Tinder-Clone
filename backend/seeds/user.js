@@ -1,7 +1,7 @@
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import User from "../models/userModel.js";
-import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -70,7 +70,7 @@ const generateRandomUser = (gender, index) => {
 
 const seedUsers = async () => {
 	try {
-		await mongoose.connect("mongodb+srv://xjohnfitcodes:idNqFLpfPdGjcdR5@cluster0.w7sl0.mongodb.net/tinder-clone?retryWrites=true&w=majority&appName=Cluster0");
+		await mongoose.connect(process.env.MONGO_URI);
 
 		await User.deleteMany({});
 
@@ -81,7 +81,7 @@ const seedUsers = async () => {
 
 		await User.insertMany(allUsers);
 
-		console.log("Database seeded successfully with users having concise bios");
+		console.log("Database seeded successfully");
 	} catch (error) {
 		console.error("Error seeding database:", error);
 	} finally {
