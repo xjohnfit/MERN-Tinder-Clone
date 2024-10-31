@@ -47,7 +47,7 @@ const Sidebar = () => {
 									<div className='flex items-center mb-4 cursor-pointer hover:bg-pink-50 p-2 rounded-lg transition-colors duration-300'>
 										<img
 											src={match.image || "/avatar.png"}
-											alt='User Avatar'
+											alt='User avatar'
 											className='size-12 object-cover rounded-full mr-3 border-2 border-pink-300'
 										/>
 

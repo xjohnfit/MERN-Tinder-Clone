@@ -17,15 +17,13 @@ const HomePage = () => {
 		getUserProfiles();
 	}, [getUserProfiles]);
 
-    console.log(userProfiles);
+	useEffect(() => {
+		authUser && subscribeToNewMatches();
 
-	// useEffect(() => {
-	// 	authUser && subscribeToNewMatches();
-
-	// 	return () => {
-	// 		unsubscribeFromNewMatches();
-	// 	};
-	// }, [subscribeToNewMatches, unsubscribeFromNewMatches, authUser]);
+		return () => {
+			unsubscribeFromNewMatches();
+		};
+	}, [subscribeToNewMatches, unsubscribeFromNewMatches, authUser]);
 
 	return (
 		<div
