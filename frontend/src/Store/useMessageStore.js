@@ -15,7 +15,6 @@ export const useMessageStore = create((set) => ({
                 messages: [...state.messages, { _id: Date.now(), sender: useAuthStore.getState().authUser._id, content }],
             }));
             const res = await axiosInstance.post('/messages/send/', { receiverId, content });
-            console.log("Message sent successfully", res.data);
         } catch (error) {
             toast.error(error.response.data.message || "Failed to send message");
         }
@@ -25,7 +24,6 @@ export const useMessageStore = create((set) => ({
 		try {
 			set({ loading: true });
 			const res = await axiosInstance.get(`/messages/conversation/${userId}`);
-            console.log(res.data);
             set(({ 
                 messages: res.data.messages,
             }));
@@ -39,7 +37,7 @@ export const useMessageStore = create((set) => ({
 
     subscribeToMessages: () => {
         const socket = getSocket();
-        socket.on('newMessage', (message) => {
+        socket.on('newMessage', ({message}) => {
             set((state) => ({ messages: [...state.messages, message] }));
         });
     },

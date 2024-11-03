@@ -25,6 +25,8 @@ app.use(cors({
 }));
 
 const httpServer = createServer(app);
+
+
 initializeSocket(httpServer);
 
 app.use('/api/auth', authRoutes);    

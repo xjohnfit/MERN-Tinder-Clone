@@ -159,7 +159,7 @@ const SignUpForm = () => {
             {/* GENDER PREFERENCE */}
             <div>
                 <label className="block text-sm font-medium text-gray-700">
-                    Prefer Me
+                    I prefer to match with
                 </label>
                 <div className="mt-2 space-y-2">
                     <div className="flex items-center">
