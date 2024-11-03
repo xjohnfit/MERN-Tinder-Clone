@@ -11,7 +11,7 @@ export const sendMessage = async (req, res) => {
             content,
         });
 
-        //TODO SEND THE MESSAGE IN REAL TIME TO THE RECEIVER VIA SOCKET.IO
+        //SEND THE MESSAGE IN REAL TIME TO THE RECEIVER VIA SOCKET.IO
 
         const io = getIO();
         const connectedUsers = getConnectedUsers();
