@@ -5,7 +5,7 @@ import { useMatchStore } from "../Store/useMatchStore";
 import { useMessageStore } from "../Store/useMessageStore";
 import { Link, useParams } from "react-router-dom";
 import { Loader, UserX } from "lucide-react";
-import MessageInput from "../components/MessageInput";
+import MessageInput from "../Components/MessageInput";
 
 const ChatPage = () => {
 	const { getMyMatches, matches, isLoadingMatches } = useMatchStore();
