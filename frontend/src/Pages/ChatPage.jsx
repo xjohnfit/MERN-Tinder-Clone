@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Header } from "../components/Header";
+import { Header } from "../Components/Header";
 import { useAuthStore } from "../Store/useAuthStore";
 import { useMatchStore } from "../Store/useMatchStore";
 import { useMessageStore } from "../Store/useMessageStore";
