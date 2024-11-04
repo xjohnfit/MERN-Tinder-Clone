@@ -15,7 +15,15 @@ import messagesRoutes from './routes/messageRoutes.js';
 
 //config
 dotenv.config();
+
 const app = express();
+const httpServer = createServer(app);
+const PORT = process.env.PORT || 5000;
+
+const __dirname = path.resolve();
+
+initializeSocket(httpServer);
+
 app.use(express.json({
      limit: '50mb'
 }));
@@ -25,23 +33,17 @@ app.use(cors({
     credentials: true
 }));
 
-const PORT = process.env.PORT || 5000;
-const httpServer = createServer(app);
+app.use('/api/auth', authRoutes);    
+app.use('/api/users', userRoutes);
+app.use('/api/matches', matchRoutes);
+app.use('/api/messages', messagesRoutes);
 
-const __dirname = path.resolve();
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '/frontend/dist')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
     });
 }
-
-initializeSocket(httpServer);
-
-app.use('/api/auth', authRoutes);    
-app.use('/api/users', userRoutes);
-app.use('/api/matches', matchRoutes);
-app.use('/api/messages', messagesRoutes);
 
 httpServer.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
