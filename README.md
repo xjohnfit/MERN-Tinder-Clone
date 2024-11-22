@@ -31,7 +31,7 @@ This is a full-stack web application built with the **MERN** stack (MongoDB, Exp
 │   └── seeds              # Seed file to seed database with random users
 │   └── socket             # Socket.io server config file
 .
-├── frontend                 # ReactJS frontend
+├── frontend               # ReactJS frontend
 │   ├── public
 │   └── src
 ├── .env                   # Environment variables
