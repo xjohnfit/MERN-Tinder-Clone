@@ -22,7 +22,7 @@ This is a full-stack web application built with the **MERN** stack (MongoDB, Exp
 ## Project Structure
 
 ```
-├── backend                 # ExpressJS backend
+├── backend                # ExpressJS backend
 │   ├── config             # Database and Cloudinary configurations
 │   ├── controllers        # API controllers and business logic
 │   ├── middleware         # Middleware for protected routes
